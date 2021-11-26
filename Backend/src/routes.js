@@ -5,12 +5,8 @@ const multerConfig = require('./config/multer');
 const registerPost = require('./models/Post');
 
 routes.get('/posts', async (req, res) => {
-    try {
-        const posts = await registerPost.find();
-        return res.json(posts);
-    } catch (error) {
-        return res.status(400).status({ Error: "Não há Arquivos" });
-    }
+    const posts = await registerPost.find();
+    return res.json(posts);
 })
 
 routes.post('/register', multer(multerConfig).single('file'), async (req, res) => {
