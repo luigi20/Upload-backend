@@ -9,7 +9,7 @@ routes.get('/posts', async (req, res) => {
     return res.json(posts);
 })
 
-routes.post('/register', multer(multerConfig).single('file'), async (req, res) => {
+routes.post('/posts', multer(multerConfig).single('file'), async (req, res) => {
     const { originalname: name, size, key, location: url = "" } = req.file;
     const register = await registerPost.create({
         name,
